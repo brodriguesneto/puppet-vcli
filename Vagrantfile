@@ -10,7 +10,7 @@ VAGRANTFILE_API_VERSION = "2"
 # Variable to set config.vm.hostname and vbox.name (if uncommented)
 $my_name = File.open("manifests/init.pp","r").grep(/class /).to_s.split(" ")[-2]
 
-# Variables to set the source of file provision to copy
+# Variables to set the source of file provision to copy from
 $gitconfig = open(ENV['HOME'] + '/.gitconfig')
 $vimrc     = open(ENV['HOME'] + '/.vimrc')
 $bashrc    = open(ENV['HOME'] + '/.bashrc')
