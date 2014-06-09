@@ -2,7 +2,9 @@
   "author": "Boaventura Rodrigues Neto",
   "checksums": {
     "LICENSE": "6c4db32a2fa8717faffa1d4f10136f47",
+    "vagrant_bootstrap.sh": "33e72bf9956f2aa2b618745e6a6ca8b1",
     "manifests/init.pp": "b7ded8bd7fbe0244a37b0c252abe64f8",
+    "Vagrantfile": "f5974aef3bb8cc8f0c598c412a961390",
     "README": "0a7c249ec26189632b8caee417748600",
     "Modulefile": "617d34d458b6dbe3799d1c61774eae3d",
     "tests/init.pp": "ae1680101ab48d6b8ce5f51f2a67d03e",
