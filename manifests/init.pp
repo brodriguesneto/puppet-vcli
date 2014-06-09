@@ -36,6 +36,45 @@
 # Copyright 2014 Your name here, unless otherwise noted.
 #
 class vcli {
+  package { [
+    'ia32-libs',
+    'libxml-libxml-perl',
+    'libclass-methodmaker-perl',
+    'libcrypt-ssleay-perl',
+    'perl-doc',
+    'libarchive-zip-perl',
+    'libsoap-lite-perl',
+    'libdata-dump-perl',
+    'libuuid-perl',
+    'libssl-dev']:
+    ensure => 'present',
+  }
 
+  file { '/usr/local/src/vmware-vcli-5.1.tar.gz':
+    ensure  => 'file',
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
+    source  => 'puppet:///modules/vcli/vmware-vcli-5.1.tar.gz',
+    require => Package[
+      'ia32-libs',
+      'libxml-libxml-perl',
+      'libclass-methodmaker-perl',
+      'libcrypt-ssleay-perl',
+      'perl-doc',
+      'libarchive-zip-perl',
+      'libsoap-lite-perl',
+      'libdata-dump-perl',
+      'libuuid-perl',
+      'libssl-dev'
+    ],
+  }
+
+  exec { 'tar vxzf vmware-vcli-5.1.tar.gz && vmware-vsphere-cli-distrib/vmware-install.pl --default':
+    path      => '/usr/bin:/usr/sbin:/bin',
+    cwd       => '/usr/local/src',
+    provider  => 'shell',
+    subscribe => File['/usr/local/src/vmware-vcli-5.1.tar.gz'],
+  }
 
 }

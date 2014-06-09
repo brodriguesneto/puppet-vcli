@@ -15,3 +15,5 @@ bin/*.ap_
 */*.swp
 .vagrant/
 
+# Puppet files
+files/vmware-vcli-5.1.tar.gz
