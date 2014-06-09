@@ -1,0 +1,23 @@
+{
+  "author": "Boaventura Rodrigues Neto",
+  "checksums": {
+    "LICENSE": "6c4db32a2fa8717faffa1d4f10136f47",
+    "vagrant_bootstrap.sh": "33e72bf9956f2aa2b618745e6a6ca8b1",
+    "manifests/init.pp": "b7ded8bd7fbe0244a37b0c252abe64f8",
+    "Vagrantfile": "59c6bb1a91802d1af9be191d2b903c96",
+    "README": "0a7c249ec26189632b8caee417748600",
+    "Modulefile": "617d34d458b6dbe3799d1c61774eae3d",
+    "tests/init.pp": "ae1680101ab48d6b8ce5f51f2a67d03e",
+    "spec/spec_helper.rb": "a55d1e6483344f8ec6963fcb2c220372",
+    "README.md": "116827470b4b4b90812cf465f417857b"
+  },
+  "dependencies": [],
+  "description": "",
+  "license": "Apache License, Version 2.0",
+  "name": "brodriguesneto-vcli",
+  "project_page": "https://github.com/brodriguesneto/puppet-vcli.git",
+  "source": "https://github.com/brodriguesneto/puppet-vcli.git",
+  "summary": "Module to install and manages VMWare  VCLI via puppet",
+  "types": [],
+  "version": "0.1.0"
+}
