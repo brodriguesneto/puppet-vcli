@@ -48,6 +48,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision      :file, source: $vimrc,     destination: "/root/.vimrc"
   config.vm.provision      :file, source: $bashrc,    destination: "/root/.bashrc"
   # Shell provision
-  config.vm.provision        :shell, path: "vagrant_ubuntu_bootstrap.sh"
+  config.vm.provision      :shell, path: "vagrant_ubuntu_bootstrap.sh"
 
 end
