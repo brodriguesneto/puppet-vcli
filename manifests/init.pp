@@ -35,46 +35,20 @@
 #
 # Copyright 2014 Your name here, unless otherwise noted.
 #
-class vcli {
-  package { [
-    'ia32-libs',
-    'libxml-libxml-perl',
-    'libclass-methodmaker-perl',
-    'libcrypt-ssleay-perl',
-    'perl-doc',
-    'libarchive-zip-perl',
-    'libsoap-lite-perl',
-    'libdata-dump-perl',
-    'libuuid-perl',
-    'libssl-dev']:
-    ensure => 'present',
+class vcli ($ensure = 'present', $autoupgrade = false) inherits vcli::params {
+  case $ensure {
+    /(present)/ : {
+      if $autoupgrade == true {
+        $package_ensure = 'latest'
+      } else {
+        $package_ensure = 'present'
+      }
+    }
+    /(absent)/  : {
+      $package_ensure = 'absent'
+    }
+    default     : {
+      fail('ensure parameter must be present or absent')
+    }
   }
-
-  file { '/usr/local/src/vmware-vcli-5.1.tar.gz':
-    ensure  => 'file',
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0644',
-    source  => 'puppet:///modules/vcli/vmware-vcli-5.1.tar.gz',
-    require => Package[
-      'ia32-libs',
-      'libxml-libxml-perl',
-      'libclass-methodmaker-perl',
-      'libcrypt-ssleay-perl',
-      'perl-doc',
-      'libarchive-zip-perl',
-      'libsoap-lite-perl',
-      'libdata-dump-perl',
-      'libuuid-perl',
-      'libssl-dev'
-    ],
-  }
-
-  exec { 'tar vxzf vmware-vcli-5.1.tar.gz && vmware-vsphere-cli-distrib/vmware-install.pl --default':
-    path      => '/usr/bin:/usr/sbin:/bin',
-    cwd       => '/usr/local/src',
-    provider  => 'shell',
-    subscribe => File['/usr/local/src/vmware-vcli-5.1.tar.gz'],
-  }
-
 }
