@@ -5,7 +5,7 @@ class vcli::config {
     group   => 'root',
     mode    => '0644',
     source  => 'puppet:///modules/vcli/vmware-vcli-5.1.tar.gz',
-    require => Package['$vcli::params::packages'],
+    require => Package[$vcli::params::packages],
   }
 
   exec { 'tar vxzf vmware-vcli-5.1.tar.gz && vmware-vsphere-cli-distrib/vmware-install.pl --default':

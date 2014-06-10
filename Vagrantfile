@@ -25,26 +25,22 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   ### VM configuration
-  config.vm.box              = "ubuntu/trusty64"
-  config.vm.box_check_update = true
-  config.vm.hostname         = $my_name
-
-  ### Network configuration
-  # Bridge network
-  #config.vm.network "public_network"
-  # SSH agent
-  config.ssh.forward_agent   = true
-
-  ### Synced Folder
-  # VirtualBox example:
-  #config.vm.synced_folder "/local/folder", "/guest/folder"
-
-  ### Provisioning
-  # File provision
-  config.vm.provision	     :file, source: $gitconfig, destination: "/home/vagrant/.gitconfig"
-  config.vm.provision	     :file, source: $vimrc,     destination: "/home/vagrant/.vimrc"
-  config.vm.provision	     :file, source: $bashrc,    destination: "/home/vagrant/.bashrc"
-  # Shell provision
-  config.vm.provision      :shell, path: "vagrant_ubuntu_bootstrap.sh"
-
+  config.vm.define "precise" do |precise|
+    precise.vm.box              = "ubuntu/precise64"
+    precise.vm.box_check_update = true
+    precise.vm.provision        :file,  source: $gitconfig, destination: "/home/vagrant/.gitconfig"
+    precise.vm.provision        :file,  source: $vimrc,     destination: "/home/vagrant/.vimrc"
+    precise.vm.provision        :file,  source: $bashrc,    destination: "/home/vagrant/.bashrc"
+    precise.vm.provision        :shell, path: "vagrant_ubuntu_bootstrap.sh"
+  end
+  
+  config.vm.define "trusty" do |trusty|
+    trusty.vm.box              = "ubuntu/trusty64"
+    trusty.vm.box_check_update = true
+    trusty.vm.provision        :file,  source: $gitconfig, destination: "/home/vagrant/.gitconfig"
+    trusty.vm.provision        :file,  source: $vimrc,     destination: "/home/vagrant/.vimrc"
+    trusty.vm.provision        :file,  source: $bashrc,    destination: "/home/vagrant/.bashrc"
+    trusty.vm.provision        :shell, path: "vagrant_ubuntu_bootstrap.sh"
+  end
+  
 end
