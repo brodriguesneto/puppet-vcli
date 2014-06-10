@@ -51,4 +51,8 @@ class vcli ($ensure = 'present', $autoupgrade = false) inherits vcli::params {
       fail('ensure parameter must be present or absent')
     }
   }
+
+ include vcli::install, vcli::config
+ Class['vcli::install'] -> Class['vcli::config']
 }
+

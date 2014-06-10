@@ -25,9 +25,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   ### VM configuration
-  config.vm.box              = "ubuntu/trusty64"
-  config.vm.box_check_update = true
-  config.vm.hostname         = $my_name
+  config.vm.define "precise" do |precise|
+    precise.vm.box              = "ubuntu/precise64"
+    precise.vm.box_check_update = true
+  end
+  
+  config.vm.define "trusty" do |trusty|
+    trusty.vm.box              = "ubuntu/trusty64"
+    trusty.vm.box_check_update = true
+  end
 
   ### Network configuration
   # Bridge network
