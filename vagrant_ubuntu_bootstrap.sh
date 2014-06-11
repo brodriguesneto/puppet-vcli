@@ -1,4 +1,5 @@
 #!/bin/sh
+/usr/bin/dpkg --add-architecture i386 > /dev/null 2>&1
 /usr/bin/aptitude update > /dev/null 2>&1
 /usr/bin/aptitude -y install vim vim-puppet puppet-lint git > /dev/null 2>&1
 /usr/bin/vim-addons install puppet > /dev/null 2>&1
