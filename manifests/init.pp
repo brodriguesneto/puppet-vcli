@@ -52,7 +52,6 @@ class vcli ($ensure = 'present', $autoupgrade = false) inherits vcli::params {
     }
   }
 
- include vcli::install, vcli::config
- Class['vcli::install'] -> Class['vcli::config']
+ include vcli::install, vcli::config, vcli::compile
+ Class['vcli::install'] -> Class['vcli::config'] ~> Class['vcli::compile']
 }
-
