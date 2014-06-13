@@ -4,7 +4,7 @@ class vcli::tarball {
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
-    source  => 'puppet:///modules/vcli/vmware-vcli-5.1.tar.gz',
+    source  => "puppet:///modules/${module_name}/vmware-vcli-5.1.tar.gz",
     require => Class['vcli::dependencies'],
     notify  => Class['vcli::install'],
   }
